@@ -9,7 +9,7 @@ const {
 
 module.exports.getCards = (req, res, next) => {
   Card.find({})
-    .then((cards) => res.send({ zhopa: cards }))
+    .then((cards) => res.send({ data: cards }))
     .catch(next);
 };
 
