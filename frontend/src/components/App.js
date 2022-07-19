@@ -186,7 +186,7 @@ class App extends React.Component {
           authorizationSuccess: true,
           isInfoTooltipOpen: true
         })
-        this.props.history.push('/sign-in')
+        this.props.history.push('/signin')
       } else {
         this.setState({
           authorizationSuccess: false,
@@ -322,7 +322,7 @@ class App extends React.Component {
                 />
 
                 </ProtectedRoute>
-            <Route path="/sign-up">
+            <Route path="/signup">
               <Register
                 onRegister={this.handleRegister}
               />

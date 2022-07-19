@@ -52,5 +52,5 @@ class Auth {
 }
 
 export const auth = new Auth({
-  baseUrl: 'https://auth.nomoreparties.co'
+  baseUrl: 'https://mest0.backend.nomoredomains.xyz',
 })
