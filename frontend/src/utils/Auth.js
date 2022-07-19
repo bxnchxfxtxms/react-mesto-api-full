@@ -25,6 +25,7 @@ class Auth {
   authorize = (email, password) => {
     return fetch(`${this._baseUrl}/signin`, {
       method: 'POST',
+      // credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -39,10 +40,11 @@ class Auth {
   getContent = jwt => {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'GET',
+      // credentials: 'include',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${jwt}`,
+        'Authorization': `${jwt}`,
       }
     })
     .then(res => res.json())
@@ -52,5 +54,5 @@ class Auth {
 }
 
 export const auth = new Auth({
-  baseUrl: 'https://mest0.backend.nomoredomains.xyz',
+  baseUrl: 'https://mest0.backend.students.nomoredomains.xyz',
 })

@@ -218,7 +218,7 @@ class App extends React.Component {
           console.log(err)
         })
       }
-      // } 
+      // } npm
     }
     
     handleLogin = data => {
