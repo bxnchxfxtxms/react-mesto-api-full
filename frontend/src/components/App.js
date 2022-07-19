@@ -181,7 +181,9 @@ class App extends React.Component {
     auth.register(data.email, data.password)
     .then((res) => {
       if (res) {
-        // localStorage.setItem('token', res.data._id)
+        console.log(res)
+        localStorage.setItem('token', res.data._id)
+        console.log(localStorage.getItem('token'))
         this.setState({
           authorizationSuccess: true,
           isInfoTooltipOpen: true
@@ -200,7 +202,7 @@ class App extends React.Component {
   }
   
   tokenCheck = () => {
-    // if (localStorage.getItem('jwt')){
+    if (localStorage.getItem('jwt')){
       const jwt = localStorage.getItem('jwt');
       if (jwt){
         auth.getContent(jwt)
@@ -218,7 +220,7 @@ class App extends React.Component {
           console.log(err)
         })
       }
-      // } npm
+      }
     }
     
     handleLogin = data => {

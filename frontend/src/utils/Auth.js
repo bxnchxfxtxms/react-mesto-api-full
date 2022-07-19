@@ -25,7 +25,7 @@ class Auth {
   authorize = (email, password) => {
     return fetch(`${this._baseUrl}/signin`, {
       method: 'POST',
-      // credentials: 'include',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -40,11 +40,11 @@ class Auth {
   getContent = jwt => {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'GET',
-      // credentials: 'include',
+      credentials: 'include',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': `${jwt}`,
+        'Authorization': jwt,
       }
     })
     .then(res => res.json())
