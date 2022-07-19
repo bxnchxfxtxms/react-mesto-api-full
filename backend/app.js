@@ -10,8 +10,8 @@ const NotFoundError = require('./errors/not-found-error');
 const httpRegex = require('./utils/http-regex');
 
 const allowedCors = [
-  'http://mest0.backend.nomoredomains.xyz',
-  'https://mest0.backend.nomoredomains.xyz',
+  'http://mest0.students.nomoredomains.xyz',
+  'https://mest0.students.nomoredomains.xyz',
   'localhost:3000',
 ];
 const {
