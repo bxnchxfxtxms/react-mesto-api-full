@@ -1,6 +1,4 @@
 import React from 'react'
-// import Auth from '../utils/Auth'
-import { auth } from '../utils/Auth'
 import { Link, withRouter } from 'react-router-dom'
 
 class Register extends React.Component {
