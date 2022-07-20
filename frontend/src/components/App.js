@@ -87,6 +87,7 @@ class App extends React.Component {
   componentDidMount() {
     api.getUserInfo()
     .then(userData => {
+      console.log(userData)
       this.handleSetUserData(userData)
     })
     .catch(err => { 
