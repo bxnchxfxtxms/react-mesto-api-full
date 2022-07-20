@@ -1,4 +1,4 @@
-// const { NODE_ENV, JWT_SECRET } = process.env;
+const { NODE_ENV, JWT_SECRET } = process.env;
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
@@ -96,16 +96,13 @@ module.exports.login = (req, res, next) => {
   const { email, password } = req.body;
 
   User.findUserByCredentials(email, password)
-    // .then((user) => {
-    //   const token = jwt.sign(
-    //     { _id: user._id },
-    //     NODE_ENV === 'production' ? JWT_SECRET : '1qa2ws3ed4rf5tg6yh',
-    //   );
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, '1qa2ws3ed4rf5tg6yh');
-      res.cookie('jwt', token, { secure: true, sameSite: false, httpOnly: true, maxAge: 3600000 * 24 * 7 }).send({ message: 'Авторизация прошла успешно!' });
+      const token = jwt.sign(
+        { _id: user._id },
+        NODE_ENV === 'production' ? JWT_SECRET : '1qa2ws3ed4rf5tg6yh',
+      );
+      res.cookie('jwt', token, { secure: true, maxAge: 3600000 * 24 * 7 }).send({ message: 'Авторизация прошла успешно!' });
     })
-
     .catch(next);
 };
 
