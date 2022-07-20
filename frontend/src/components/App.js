@@ -228,6 +228,7 @@ class App extends React.Component {
         // auth.getContent(jwt)
         auth.getContent()
         .then((res) => {
+          console.log(res)
           if (res){
             this.setState({
               email: res.data.email,
