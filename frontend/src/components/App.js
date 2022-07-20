@@ -199,11 +199,34 @@ class App extends React.Component {
     })
   }
   
-  tokenCheck = () => {
-    if (localStorage.getItem('jwt')){
-      const jwt = localStorage.getItem('jwt');
-      if (jwt){
-        auth.getContent(jwt)
+  // tokenCheck = () => {
+  //   if (localStorage.getItem('jwt')){
+  //     const jwt = localStorage.getItem('jwt');
+  //     if (jwt){
+  //       auth.getContent(jwt)
+  //       .then((res) => {
+  //         if (res){
+  //           this.setState({
+  //             email: res.data.email,
+  //             loggedIn: true,
+  //           }, () => {
+  //             this.props.history.push("/");
+  //           })
+  //         }
+  //       })
+  //       .catch(err => { 
+  //         console.log(err)
+  //       })
+  //     }
+  //     }
+  //   }
+
+    tokenCheck = () => {
+    // if (localStorage.getItem('jwt')){
+    //   const jwt = localStorage.getItem('jwt');
+    //   if (jwt){
+        // auth.getContent(jwt)
+        auth.getContent()
         .then((res) => {
           if (res){
             this.setState({
@@ -217,8 +240,8 @@ class App extends React.Component {
         .catch(err => { 
           console.log(err)
         })
-      }
-      }
+      // }
+      // }
     }
     
     handleLogin = data => {
