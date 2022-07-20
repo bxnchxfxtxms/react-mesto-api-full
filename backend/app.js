@@ -29,6 +29,8 @@ mongoose.connect('mongodb://localhost:27017/mestodb');
 
 app.use(requestLogger);
 
+app.use(cookieParser());
+
 app.use((req, res, next) => {
   const { origin } = req.headers;
   if (allowedCors.includes(origin)) {
@@ -47,6 +49,7 @@ app.use((req, res, next) => {
   next();
 });
 
+
 app.post('/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
@@ -63,7 +66,6 @@ app.post('/signup', celebrate({
     avatar: Joi.string().pattern(httpRegex),
   }),
 }), createUser);
-app.use(cookieParser());
 app.use(auth);
 app.use('/users', require('./routes/users'));
 app.use('/cards', require('./routes/cards'));
