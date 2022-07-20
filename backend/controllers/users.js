@@ -103,7 +103,7 @@ module.exports.login = (req, res, next) => {
     //   );
     .then((user) => {
       const token = jwt.sign({ _id: user._id }, '1qa2ws3ed4rf5tg6yh');
-      res.cookie('jwt', token, { secure: true, httpOnly: true, maxAge: 3600000 * 24 * 7 }).send({ message: 'Авторизация прошла успешно!' });
+      res.cookie('jwt', token, { secure: true, sameSite: false, httpOnly: true, maxAge: 3600000 * 24 * 7 }).send({ message: 'Авторизация прошла успешно!' });
     })
 
     .catch(next);
