@@ -20,17 +20,17 @@ class Header extends React.Component {
                 Выйти
             </button>
           </Route>
-          <Route path='/sign-up'>
+          <Route path='/signup'>
             <Link
               className="site-entrance__redirect-link site-entrance__redirect-link_place_header"
-              to='sign-in'>
+              to='signin'>
                 Войти
             </Link>
           </Route>
-          <Route path='/sign-in'>
+          <Route path='/signin'>
             <Link
               className="site-entrance__redirect-link site-entrance__redirect-link_place_header"
-              to='sign-up'>
+              to='signup'>
                 Зарегистрироваться
             </Link>
           </Route>

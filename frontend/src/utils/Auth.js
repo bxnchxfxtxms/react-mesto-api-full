@@ -25,11 +25,10 @@ class Auth {
   authorize = (email, password) => {
     return fetch(`${this._baseUrl}/signin`, {
       method: 'POST',
-      credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ password, email })
+      body: JSON.stringify({ email, password })
     })
     .then(this._checkResponse)
     .then((res) => {
@@ -37,14 +36,15 @@ class Auth {
     })
   }
   
-  getContent = jwt => {
+  // getContent = jwt => {
+  getContent = () => {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'GET',
       credentials: 'include',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': jwt,
+        // 'Authorization': `${jwt}`,
       }
     })
     .then(res => res.json())

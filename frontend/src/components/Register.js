@@ -57,7 +57,7 @@ class Register extends React.Component {
           type="submit" >
             Зарегистрироваться
         </button>
-        <Link className="site-entrance__redirect-link" to="/sign-in">
+        <Link className="site-entrance__redirect-link" to="/signin">
           Уже зарегистрированы? Войти
         </Link>
       </form>

@@ -181,9 +181,7 @@ class App extends React.Component {
     auth.register(data.email, data.password)
     .then((res) => {
       if (res) {
-        console.log(res)
         localStorage.setItem('token', res.data._id)
-        console.log(localStorage.getItem('token'))
         this.setState({
           authorizationSuccess: true,
           isInfoTooltipOpen: true
@@ -232,8 +230,9 @@ class App extends React.Component {
       })
       auth.authorize(data.email, data.password)
       .then((res) => {
-        if (res.token) {
-          localStorage.setItem('jwt', res.token)
+        // if (res.token) {
+          if (res) {
+          // localStorage.setItem('jwt', res.token)
           this.setState({
             loggedIn: true,
             email: data.email
