@@ -52,7 +52,7 @@ class App extends React.Component {
   handleCardLike = card => {
     console.log(this.state.currentUser)
     console.log(card.likes)
-    const isLiked = card.likes.some(i => i._id === this.state.currentUser._id);
+    const isLiked = card.likes.some(i => i === this.state.currentUser._id);
 
     isLiked ?
     api.removeLike(card._id)
@@ -81,6 +81,7 @@ class App extends React.Component {
         name: serverData.name,
         about: serverData.about,
         avatar: serverData.avatar,
+        email: serverData.email,
         _id: serverData._id,
       }
     })
@@ -233,7 +234,7 @@ class App extends React.Component {
           console.log(res)
           if (res){
             this.setState({
-              // email: res.data.email,
+              email: this.state.currentUser.email,
               loggedIn: true,
             }, () => {
               this.props.history.push("/");
