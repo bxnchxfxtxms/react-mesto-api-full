@@ -9,7 +9,12 @@ const {
 
 module.exports.getCards = (req, res, next) => {
   Card.find({})
-    .then((cards) => res.send([cards]))
+    .then((cards) => {
+      console.log(cards);
+      console.log({ cards });
+      console.log([cards]);
+      res.send([cards]);
+    })
     .catch(next);
 };
 
