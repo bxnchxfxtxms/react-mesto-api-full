@@ -56,7 +56,7 @@ class App extends React.Component {
     api.removeLike(card._id)
     .then((newCard) => {
       this.setState({
-        cards: this.state.cards.map((c) => (c._id === card._id) ? newCard : c)
+        cards: this.state.cards.map((c) => c._id === card._id ? newCard : c)
       })
     })
     .catch(err => { 

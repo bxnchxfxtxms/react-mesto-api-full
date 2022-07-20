@@ -93,9 +93,6 @@ class Api {
 export const api = new Api({
   baseUrl: 'https://mest0.backend.students.nomoredomains.xyz',
   headers: {
-    // authorization: '3ab20797-6d1f-45f8-973c-0229900ec517',
-    // authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmQ3MWVlNmE2ODEzZDFhYmFjMTJlZjEiLCJpYXQiOjE2NTgyNjcxODZ9.E_PUvQ_91F_d87z2hmMM5kdLlDMNLTntDfUQIxuxwy8',
-    // authorization: `${jwt}`,
     'Content-Type': 'application/json'
   }
 });
