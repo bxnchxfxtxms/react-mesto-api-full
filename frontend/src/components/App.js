@@ -50,6 +50,8 @@ class App extends React.Component {
   }
 
   handleCardLike = card => {
+    console.log(this.state.currentUser)
+    console.log(card.likes)
     const isLiked = card.likes.some(i => i._id === this.state.currentUser._id);
 
     isLiked ?
