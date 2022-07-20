@@ -89,7 +89,6 @@ class App extends React.Component {
   componentDidMount() {
     api.getUserInfo()
     .then(userData => {
-      console.log(userData)
       this.handleSetUserData(userData)
     })
     .catch(err => { 
@@ -234,7 +233,7 @@ class App extends React.Component {
           console.log(res)
           if (res){
             this.setState({
-              email: res.data.email,
+              // email: res.data.email,
               loggedIn: true,
             }, () => {
               this.props.history.push("/");
@@ -257,6 +256,7 @@ class App extends React.Component {
       })
       auth.authorize(data.email, data.password)
       .then((res) => {
+        console.log(this.state.currentUser)
         // if (res.token) {
           if (res) {
           // localStorage.setItem('jwt', res.token)
