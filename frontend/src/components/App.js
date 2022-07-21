@@ -37,6 +37,29 @@ class App extends React.Component {
     }
   }
 
+  getPageContent = () => {
+    api.getUserInfo()
+    .then(userData => {
+      this.handleSetUserData(userData)
+    })
+    .catch(err => { 
+      console.log(err)
+    })
+    api.getCards()
+    .then(_ => {
+      this.setState({
+        cards: _
+      })
+    })
+    .catch(err => { 
+      console.log(err)
+    })
+    auth.getContent()
+    .catch(err => { 
+      console.log(err)
+    })
+  }
+
   handleCardDelete = card => {
     api.deleteCard(card._id)
     .then(() => {
@@ -88,27 +111,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    api.getUserInfo()
-    .then(userData => {
-      this.handleSetUserData(userData)
-    })
-    .catch(err => { 
-      console.log(err)
-    })
-    api.getCards()
-    .then(_ => {
-      this.setState({
-        cards: _
-      })
-    })
-    .catch(err => { 
-      console.log(err)
-    })
-    auth.getContent()
-    .catch(err => { 
-      console.log(err)
-    })
-    // this.tokenCheck()
+    this.getPageContent()
   }
 
   handleAddPlaceSubmit = newCardData => {
@@ -188,6 +191,7 @@ class App extends React.Component {
     auth.register(data.email, data.password)
     .then((res) => {
       if (res) {
+        this.getPageContent()
         this.setState({
           authorizationSuccess: true,
           isInfoTooltipOpen: true
@@ -204,24 +208,6 @@ class App extends React.Component {
       console.log(err)
     })
   }
-
-    // tokenCheck = () => {
-    //     auth.getContent()
-    //     .then((res) => {
-    //       console.log(res)
-    //       if (res){
-    //         this.setState({
-    //           email: this.state.currentUser.email,
-    //           loggedIn: true,
-    //         }, () => {
-    //           this.props.history.push("/");
-    //         })
-    //       }
-    //     })
-    //     .catch(err => { 
-    //       console.log(err)
-    //     })
-    // }
     
     handleLogin = data => {
       this.setState({
@@ -232,8 +218,8 @@ class App extends React.Component {
       })
       auth.authorize(data.email, data.password)
       .then((res) => {
-        console.log(this.state.currentUser)
           if (res) {
+          this.getPageContent()
           this.setState({
             loggedIn: true,
             email: data.email
@@ -250,23 +236,14 @@ class App extends React.Component {
     })
   }
   
-  // handleLogout = () => {
-  //   this.setState({
-  //     loggedIn: false,
-  //     email: ''
-  //   })
-  //   // localStorage.removeItem('jwt')
-  //   this.props.history.push('/logout')
-  // }
-  
   handleLogout = () => {
     auth.handleLogout()
     .then(() => {
     this.setState({
+      currentUser: {},
       loggedIn: false,
       email: ''
     })
-    // localStorage.removeItem('jwt')
     this.props.history.push('/signin')
     })
     .catch(err => { 
