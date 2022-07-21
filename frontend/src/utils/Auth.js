@@ -50,6 +50,20 @@ class Auth {
     .then(data => data)
     .catch((err) => console.log(err))
   } 
+
+  handleLogout = () => {
+    return fetch(`${this._baseUrl}/logout`, {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    })
+    .then(res => res.json())
+    .then(data => data)
+    .catch((err) => console.log(err))
+  } 
 }
 
 export const auth = new Auth({

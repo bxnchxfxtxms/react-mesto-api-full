@@ -250,12 +250,28 @@ class App extends React.Component {
     })
   }
   
+  // handleLogout = () => {
+  //   this.setState({
+  //     loggedIn: false,
+  //     email: ''
+  //   })
+  //   // localStorage.removeItem('jwt')
+  //   this.props.history.push('/logout')
+  // }
+  
   handleLogout = () => {
+    auth.handleLogout()
+    .then(() => {
     this.setState({
       loggedIn: false,
       email: ''
     })
-    localStorage.removeItem('jwt')
+    // localStorage.removeItem('jwt')
+    this.props.history.push('/signin')
+    })
+    .catch(err => { 
+      console.log(err)
+    })
   }
   
   render() {
