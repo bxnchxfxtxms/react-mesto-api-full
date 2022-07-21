@@ -10,7 +10,6 @@ class Auth {
   register = (email, password) => {
     return fetch(`${this._baseUrl}/signup`, {
       method: 'POST',
-      // credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -38,7 +37,6 @@ class Auth {
     })
   }
   
-  // getContent = jwt => {
   getContent = () => {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'GET',
@@ -46,7 +44,6 @@ class Auth {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        // 'Authorization': `${jwt}`,
       }
     })
     .then(res => res.json())

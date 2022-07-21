@@ -184,7 +184,6 @@ class App extends React.Component {
     auth.register(data.email, data.password)
     .then((res) => {
       if (res) {
-        // localStorage.setItem('token', res.data._id)
         this.setState({
           authorizationSuccess: true,
           isInfoTooltipOpen: true
@@ -201,34 +200,8 @@ class App extends React.Component {
       console.log(err)
     })
   }
-  
-  // tokenCheck = () => {
-  //   if (localStorage.getItem('jwt')){
-  //     const jwt = localStorage.getItem('jwt');
-  //     if (jwt){
-  //       auth.getContent(jwt)
-  //       .then((res) => {
-  //         if (res){
-  //           this.setState({
-  //             email: res.data.email,
-  //             loggedIn: true,
-  //           }, () => {
-  //             this.props.history.push("/");
-  //           })
-  //         }
-  //       })
-  //       .catch(err => { 
-  //         console.log(err)
-  //       })
-  //     }
-  //     }
-  //   }
 
     tokenCheck = () => {
-    // if (localStorage.getItem('jwt')){
-    //   const jwt = localStorage.getItem('jwt');
-    //   if (jwt){
-        // auth.getContent(jwt)
         auth.getContent()
         .then((res) => {
           console.log(res)
@@ -244,8 +217,6 @@ class App extends React.Component {
         .catch(err => { 
           console.log(err)
         })
-      // }
-      // }
     }
     
     handleLogin = data => {
@@ -258,9 +229,7 @@ class App extends React.Component {
       auth.authorize(data.email, data.password)
       .then((res) => {
         console.log(this.state.currentUser)
-        // if (res.token) {
           if (res) {
-          // localStorage.setItem('jwt', res.token)
           this.setState({
             loggedIn: true,
             email: data.email

@@ -52,7 +52,7 @@ app.use((req, res, next) => {
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
-  }, 1);
+  }, 0);
 });
 
 app.post('/signin', celebrate({

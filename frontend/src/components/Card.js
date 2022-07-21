@@ -19,13 +19,6 @@ class Card extends React.Component {
 
   handleLikeClick = () => {
     this.props.onCardLike(this.props.card)
-    console.log(`Данные выбранной карточки ${this.props.card}`)
-    console.log(`Пользователи лайкнувшие выбранную карточку`)
-    console.log(this.props.card.likes)
-    console.log(`Владелец выбранной карточки ${this.props.card.owner}`)
-    console.log(`ID Владельца выбранной карточки ${this.props.card.owner._id}`)
-    console.log(`Текущий пользователь ${this.context}`)
-    console.log(`ID Текущего пользователя ${this.context._id}`)
   }
 
   handleDeleteClick = () => {
