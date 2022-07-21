@@ -104,7 +104,11 @@ class App extends React.Component {
     .catch(err => { 
       console.log(err)
     })
-    this.tokenCheck()
+    auth.getContent()
+    .catch(err => { 
+      console.log(err)
+    })
+    // this.tokenCheck()
   }
 
   handleAddPlaceSubmit = newCardData => {
@@ -201,23 +205,23 @@ class App extends React.Component {
     })
   }
 
-    tokenCheck = () => {
-        auth.getContent()
-        .then((res) => {
-          console.log(res)
-          if (res){
-            this.setState({
-              email: this.state.currentUser.email,
-              loggedIn: true,
-            }, () => {
-              this.props.history.push("/");
-            })
-          }
-        })
-        .catch(err => { 
-          console.log(err)
-        })
-    }
+    // tokenCheck = () => {
+    //     auth.getContent()
+    //     .then((res) => {
+    //       console.log(res)
+    //       if (res){
+    //         this.setState({
+    //           email: this.state.currentUser.email,
+    //           loggedIn: true,
+    //         }, () => {
+    //           this.props.history.push("/");
+    //         })
+    //       }
+    //     })
+    //     .catch(err => { 
+    //       console.log(err)
+    //     })
+    // }
     
     handleLogin = data => {
       this.setState({
