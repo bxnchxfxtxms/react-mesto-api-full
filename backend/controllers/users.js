@@ -106,6 +106,11 @@ module.exports.login = (req, res, next) => {
     .catch(next);
 };
 
+// module.exports.logout = (req, res, next) => {
+//   res.clearCookie('jwt').end()
+//     .catch(next);
+// };
+
 module.exports.getCurrentUser = (req, res, next) => {
   User.findById(req.user._id)
     .then((user) => {

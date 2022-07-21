@@ -17,6 +17,7 @@ const allowedCors = [
 const {
   login,
   createUser,
+  logout,
 } = require('./controllers/users');
 
 const { PORT = 3000 } = process.env;
@@ -74,6 +75,11 @@ app.post('/signup', celebrate({
 app.use(auth);
 app.use('/users', require('./routes/users'));
 app.use('/cards', require('./routes/cards'));
+
+app.use('/logout', (req, res, next) => {
+  res.clearCookiie('jwt').end();
+  return next();
+});
 
 app.use(errorLogger);
 
