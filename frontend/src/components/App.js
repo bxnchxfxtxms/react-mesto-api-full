@@ -62,17 +62,6 @@ class App extends React.Component {
     .catch(err => { 
       console.log(err)
     })
-    // auth.getContent()
-    // .then((content) => {
-    //   console.log(content)
-    //   // this.setState({
-    //   //   loggedIn: true
-    //   // })
-    //   console.log('Мы тута')
-    // })
-    // .catch(err => { 
-    //   console.log(err)
-    // })
   }
 
   handleCardDelete = card => {
