@@ -111,7 +111,9 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getPageContent()
+    if (this.state.loggedIn) {
+      this.getPageContent()
+    } 
   }
 
   handleAddPlaceSubmit = newCardData => {
