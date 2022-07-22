@@ -55,7 +55,6 @@ app.get('/crash-test', () => {
   }, 0);
 });
 
-app.use(auth);
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
@@ -73,6 +72,7 @@ app.post('/signup', celebrate({
     avatar: Joi.string().pattern(httpRegex),
   }),
 }), createUser);
+app.use(auth);
 app.use('/users', require('./routes/users'));
 app.use('/cards', require('./routes/cards'));
 
