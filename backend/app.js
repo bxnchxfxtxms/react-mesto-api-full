@@ -17,7 +17,6 @@ const allowedCors = [
 const {
   login,
   createUser,
-  // logout,
 } = require('./controllers/users');
 
 const { PORT = 3000 } = process.env;
@@ -81,11 +80,11 @@ app.use('/logout', (req, res, next) => {
   return next();
 });
 
-app.use(errorLogger);
-
 app.use(() => {
   throw new NotFoundError('Страница не найдена');
 });
+
+app.use(errorLogger);
 
 app.use(errors());
 
