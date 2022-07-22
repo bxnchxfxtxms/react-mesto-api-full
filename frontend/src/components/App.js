@@ -40,6 +40,9 @@ class App extends React.Component {
   getPageContent = () => {
     api.getUserInfo()
     .then(userData => {
+      this.setState({
+        loggedIn: true
+      })
       this.handleSetUserData(userData)
     })
     .catch(err => { 
@@ -111,8 +114,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-      this.getPageContent()
-
+    this.getPageContent()
   }
 
   handleAddPlaceSubmit = newCardData => {
