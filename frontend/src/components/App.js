@@ -40,10 +40,14 @@ class App extends React.Component {
   getPageContent = () => {
     api.getUserInfo()
     .then(userData => {
-      this.setState({
-        loggedIn: true
-      })
       this.handleSetUserData(userData)
+      if (userData) {
+        this.setState({
+          email: userData.email,
+          loggedIn: true,
+        })
+        this.props.history.push('/')
+      }
     })
     .catch(err => { 
       console.log(err)
@@ -53,14 +57,22 @@ class App extends React.Component {
       this.setState({
         cards: _
       })
+      
     })
     .catch(err => { 
       console.log(err)
     })
-    auth.getContent()
-    .catch(err => { 
-      console.log(err)
-    })
+    // auth.getContent()
+    // .then((content) => {
+    //   console.log(content)
+    //   // this.setState({
+    //   //   loggedIn: true
+    //   // })
+    //   console.log('Мы тута')
+    // })
+    // .catch(err => { 
+    //   console.log(err)
+    // })
   }
 
   handleCardDelete = card => {
